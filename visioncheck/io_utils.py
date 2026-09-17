@@ -1,22 +1,22 @@
 from pathlib import Path
 import cv2
 
-SUPPORTED = {".jpg", ".jpeg", ".png", ".bmp"}
+SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 
-def load_image(path: str):
-    file_path = Path(path)
-    if not file_path.exists():
-        raise FileNotFoundError(f"Image not found: {file_path}")
-    if file_path.suffix.lower() not in SUPPORTED:
-        raise ValueError("Supported formats: JPG, JPEG, PNG, BMP")
-    image = cv2.imread(str(file_path))
+def load_image(path):
+    file = Path(path)
+    if not file.exists():
+        raise FileNotFoundError(f"Image not found: {path}")
+    if file.suffix.lower() not in SUPPORTED_EXTENSIONS:
+        raise ValueError(f"Unsupported image format: {file.suffix}")
+    image = cv2.imread(str(file))
     if image is None:
-        raise ValueError("OpenCV could not read the image.")
+        raise ValueError("Could not read the image file.")
     return image
 
-def save_image(path: str, image):
-    out = Path(path)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    if not cv2.imwrite(str(out), image):
-        raise OSError(f"Could not save image to {out}")
-    return out
+def save_image(path, image):
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if not cv2.imwrite(str(target), image):
+        raise IOError(f"Could not save image: {path}")
+    return target

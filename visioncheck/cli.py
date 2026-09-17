@@ -45,25 +45,18 @@ def run(args):
     }
 
     save_json(result, out / "analysis.json")
-    (out / "summary.txt").write_text(
-        make_summary(args.image, stats, quality, shapes),
-        encoding="utf-8"
-    )
-
-    print("\nVisionCheck completed.")
+    (out / "summary.txt").write_text(make_summary(result), encoding="utf-8")
+    print("VisionCheck completed.")
     print(f"Image size      : {stats['width']} x {stats['height']}")
-    print(f"Sharpness       : {quality['sharpness']} ({quality['sharpness_label']})")
-    print(f"Lighting        : {quality['brightness']} ({quality['lighting_label']})")
+    print(f"Sharpness       : {quality['sharpness']:.1f} ({quality['sharpness_label']})")
+    print(f"Lighting        : {quality['brightness']:.2f} ({quality['lighting_label']})")
     print(f"Shapes detected : {len(shapes)}")
     print(f"Results saved   : {out.resolve()}")
 
 def main():
     parser = build_parser()
     args = parser.parse_args()
-    try:
-        run(args)
-    except (FileNotFoundError, ValueError, OSError) as exc:
-        parser.error(str(exc))
+    run(args)
 
 if __name__ == "__main__":
     main()

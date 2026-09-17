@@ -1,19 +1,19 @@
 import cv2
 
-def resize_keep_ratio(image, max_width=900, max_height=700):
-    h, w = image.shape[:2]
-    scale = min(max_width / w, max_height / h, 1.0)
-    if scale == 1.0:
-        return image.copy()
-    return cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
+def resize_image(image, max_width=1000):
+    height, width = image.shape[:2]
+    if width <= max_width:
+        return image
+    scale = max_width / width
+    return cv2.resize(image, (int(width * scale), int(height * scale)))
 
-def grayscale(image):
+def to_grayscale(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def denoise(image, kernel=5):
-    return cv2.GaussianBlur(image, (kernel, kernel), 0)
+def denoise(image):
+    return cv2.GaussianBlur(image, (5, 5), 0)
 
 def edge_map(image):
-    gray = grayscale(image)
+    gray = to_grayscale(image)
     smooth = denoise(gray)
-    return cv2.Canny(smooth, 70, 160)
+    return cv2.Canny(smooth, 50, 150)

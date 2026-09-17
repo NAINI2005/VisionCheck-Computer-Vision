@@ -1,0 +1,32 @@
+FAST SUBMISSION CHECKLIST
+==========================
+
+1. Create a NEW PUBLIC GitHub repository, e.g.:
+   VisionCheck-Computer-Vision
+
+2. Upload everything inside this folder to the repository root.
+   README.md MUST be at the repository root.
+
+3. Open the terminal in the project folder and test:
+   python -m venv .venv
+   # activate the environment
+   python -m pip install -r requirements.txt
+   python -m visioncheck sample_data/sample_shapes.png
+   pytest -q
+
+4. On GitHub:
+   - Settings -> General -> Danger Zone / Change repository visibility
+   - Set repository to PUBLIC if it is not already public.
+
+5. Submit ONLY the repository ROOT URL in this form:
+   https://github.com/YOUR_USERNAME/VisionCheck-Computer-Vision
+
+   Do NOT submit:
+   /tree/main
+   /blob/main
+   a ZIP URL
+   a file URL
+
+6. Upload docs/Project_Report_Naini_Nautiyal.pdf separately to the VITyarthi portal if the portal asks for the report PDF.
+
+7. Before submitting, open the public GitHub URL in an incognito/private browser window and confirm README.md and source files are visible.

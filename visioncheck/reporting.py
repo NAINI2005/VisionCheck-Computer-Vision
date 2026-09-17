@@ -1,17 +1,16 @@
 import json
-from pathlib import Path
 
 def save_json(data, path):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2), encoding="utf-8")
-    return path
 
-def make_summary(path, stats, quality, shapes):
+def make_summary(result):
+    stats = result["statistics"]
+    quality = result["quality"]
+    shapes = result["shapes"]
     lines = [
         "VISIONCHECK ANALYSIS",
-        "=" * 40,
-        f"Image: {path}",
+        "========================================",
+        f"Image: {result['input']}",
         f"Size: {stats['width']} x {stats['height']}",
         f"Channels: {stats['channels']}",
         f"Sharpness: {quality['sharpness']} ({quality['sharpness_label']})",
@@ -21,6 +20,9 @@ def make_summary(path, stats, quality, shapes):
         "",
         "Shape details:"
     ]
-    for i, shape in enumerate(shapes, 1):
-        lines.append(f"{i}. {shape['shape']} | area={shape['area']} | box={shape['width']}x{shape['height']}")
+    for index, shape in enumerate(shapes, start=1):
+        lines.append(
+            f"{index}. {shape['shape']} | area={shape['area']} | "
+            f"box={shape['width']}x{shape['height']}"
+        )
     return "\n".join(lines) + "\n"
