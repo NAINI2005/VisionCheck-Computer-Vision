@@ -1,13 +1,31 @@
 {
   "input": "sample_data/sample_shapes.png",
-  "statistics": {"width": 800, "height": 520, "channels": 3, "pixels": 416000},
-  "quality": {"sharpness": 2477.2, "brightness": 244.81, "contrast": 49.95, "sharpness_label": "high sharpness", "lighting_label": "bright"},
-  "dominant_color_bgr_mean": {"blue": 245.61, "green": 245.61, "red": 245.61},
+  "statistics": {
+    "width": 800,
+    "height": 520,
+    "channels": 3,
+    "pixels": 416000
+  },
+  "quality": {
+    "sharpness": 2477.2,
+    "brightness": 244.81,
+    "contrast": 49.95,
+    "sharpness_label": "high sharpness",
+    "lighting_label": "bright"
+  },
+  "dominant_color_bgr_mean": {
+    "blue": 245.61,
+    "green": 245.61,
+    "red": 245.61
+  },
   "shapes": [
     {"shape": "rectangle", "area": 42420.0, "x": 389, "y": 79, "width": 282, "height": 152},
     {"shape": "square/rectangle", "area": 40390.0, "x": 69, "y": 79, "width": 202, "height": 202},
     {"shape": "circle/round", "area": 28660.0, "x": 519, "y": 299, "width": 192, "height": 192},
     {"shape": "triangle", "area": 15599.0, "x": 160, "y": 300, "width": 281, "height": 112}
   ],
-  "outputs": {"edge_image": "outputs/edges.png", "annotated_image": "outputs/annotated.png"}
+  "outputs": {
+    "edge_image": "outputs/edges.png",
+    "annotated_image": "outputs/annotated.png"
+  }
 }
