@@ -1,0 +1,15 @@
+VISIONCHECK ANALYSIS
+========================================
+Image: sample_data/sample_shapes.png
+Size: 800 x 520
+Channels: 3
+Sharpness: 2477.2 (high sharpness)
+Brightness: 244.81 (bright)
+Contrast: 49.95
+Detected shapes: 4
+
+Shape details:
+1. rectangle | area=42420.0 | box=282x152
+2. square/rectangle | area=40390.0 | box=202x202
+3. circle/round | area=28660.0 | box=192x192
+4. triangle | area=15599.0 | box=281x112
